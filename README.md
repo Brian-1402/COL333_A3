@@ -30,3 +30,19 @@ COL333 Assignment 3
 
 - Created during makefile runtime.
 - Contains .satinput, .satoutput.
+
+## Submission file structure
+
+_Tentatively,_
+
+- bin/
+  - `compiled executables`
+  - minisat
+- src/
+  - `cpp files`
+- compile.sh
+- minisat (again, if needed by TA)
+- run1.sh
+- run2.sh
+- run3.sh
+- writeup.txt

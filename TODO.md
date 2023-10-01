@@ -1,0 +1,2 @@
+- Make file IO code, either from ChatGPT or prev assignments.
+- Brainstorm the SAT input model.

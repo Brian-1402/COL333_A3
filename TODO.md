@@ -1,7 +1,7 @@
 ## Todo
 
-- Make file IO code, either from ChatGPT or prev assignments.
-- Brainstorm the SAT input model.
+- make functions to make and parse minisat input and output respectively.
+  May have to make it in a separate cpp file.
 
 ## Ideas
 

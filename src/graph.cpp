@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 
-#include "parser.hpp"
+#include "graph.hpp"
 
 void parse_graph(Graph *G, std::string path, int part)
 {
@@ -37,13 +37,24 @@ void parse_graph(Graph *G, std::string path, int part)
 
 void output_graph(Graph *G, std::string path, int part)
 {
-    std::ifstream f_out{path};
+    std::ofstream f_out{path};
     if (!f_out)
     {
         std::cerr << "Unable to open file" << std::endl;
         return;
     }
-    // incomplete
+    f_out << "#1\n";
+    for (int i = 0; i < G->n; i++)
+        if (G->color[i] == 1)
+            f_out << i + 1 << " ";
+
+    if (part == 1)
+    {
+        f_out << "#2\n";
+        for (int i = 0; i < G->n; i++)
+            if (G->color[i] == 2)
+                f_out << i + 1 << " ";
+    }
 }
 
 void print_graph(Graph *G)

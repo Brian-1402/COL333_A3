@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 
-#include "parser.hpp"
+#include "graph.hpp"
 
 int main(int argc, char *argv[])
 {

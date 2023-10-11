@@ -42,5 +42,5 @@ venv/
 
 # Project-specific
 bin/*
-!*/minisat
-temp/
+# data/*
+# *.zip

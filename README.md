@@ -6,7 +6,7 @@ COL333 Assignment 3
 
 ### bin/
 
-- Contains minisat binary and compiled binaries made by compile.sh.
+- Contains compiled binaries made by compile.sh.
 
 ### data/
 
@@ -26,22 +26,15 @@ COL333 Assignment 3
 
 - The main executable code.
 
-### temp/
-
-- Created during makefile runtime.
-- Contains .satinput, .satoutput.
-
 ## Submission file structure
 
 _Tentatively,_
 
 - bin/
   - `compiled executables`
-  - minisat
 - src/
   - `cpp files`
 - compile.sh
-- minisat (again, if needed by TA)
 - run1.sh
 - run2.sh
 - run3.sh

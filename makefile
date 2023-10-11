@@ -2,7 +2,9 @@ CC=g++
 CFLAGS=-Wall -std=c++11 -O3 -funroll-loops
 
 part1:
-	$(CC) $(CFLAGS) src/part1.cpp src/parser.cpp -o bin/part1
-	./bin/part1 data/p1_test1.graphs fsdf
+	./scripts/compile.sh
+	./scripts/run1.sh data/p1_test1
+	./bin/minisat data/p1_test1.satinput data/p1_test1.satoutput -verbosity=0
+	./scripts/run2.sh data/p1_test1
 
-# part1_run:
+# part2:

@@ -1,0 +1,1 @@
+./bin/part1_out $1.satoutput $1.graph $1.mapping

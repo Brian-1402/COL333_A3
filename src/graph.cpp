@@ -15,9 +15,9 @@ void parse_graph(Graph *G, std::string path, int part)
 
     int n, e;
     f_in >> n >> e;
+    // G = new Graph(n, e, 0, 0);
     if (part == 1)
         f_in >> G->k1 >> G->k2;
-
     int **matrix = new int *[n];
     for (int i = 0; i < n; i++)
         matrix[i] = new int[n]();
@@ -29,10 +29,14 @@ void parse_graph(Graph *G, std::string path, int part)
         f_in >> v1 >> v2;
         // use v1 and v2 to put in graph structure
         matrix[v1 - 1][v2 - 1] = 1;
+        matrix[v2 - 1][v1 - 1] = 1;
+        // G->adj_matrix[v1 - 1][v2 - 1] = 1;
+        // G->adj_matrix[v2 - 1][v1 - 1] = 1;
     }
     G->n = n;
     G->e = e;
     G->adj_matrix = matrix;
+    G->color = new int[n]();
 }
 
 void output_graph(Graph *G, std::string path, int part)
@@ -43,17 +47,40 @@ void output_graph(Graph *G, std::string path, int part)
         std::cerr << "Unable to open file" << std::endl;
         return;
     }
+    if (!G->satisfiable)
+    {
+        f_out << "0";
+        return;
+    }
     f_out << "#1\n";
+    bool line_start = true;
     for (int i = 0; i < G->n; i++)
         if (G->color[i] == 1)
-            f_out << i + 1 << " ";
+        {
+            if (!line_start)
+                f_out << " " << i + 1;
+            else
+            {
+                f_out << i + 1;
+                line_start = false;
+            }
+        }
 
     if (part == 1)
     {
-        f_out << "#2\n";
+        bool line_start = true;
+        f_out << "\n#2\n";
         for (int i = 0; i < G->n; i++)
             if (G->color[i] == 2)
-                f_out << i + 1 << " ";
+            {
+                if (!line_start)
+                    f_out << " " << i + 1;
+                else
+                {
+                    f_out << i + 1;
+                    line_start = false;
+                }
+            }
     }
 }
 
@@ -78,5 +105,15 @@ void delete_graph(Graph *G)
         delete[] G->adj_matrix[i];
     }
     delete[] G->adj_matrix;
-    delete[] G;
+    delete[] G->color;
+    delete G;
+}
+
+bool check_connectivity(Graph *G)
+{
+    for (int i = 0; i < G->n; i++)
+        for (int j = i + 1; j < G->n; j++)
+            if (G->adj_matrix[i][j] == 0)
+                return false;
+    return true;
 }
